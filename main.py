@@ -6,7 +6,7 @@ from PIL import Image
 import plotly.express as px
 
 # Load and resize the logo
-img = Image.open('Vasudha_Logo_PNG.PNG')
+img = Image.open('Vasudha_Logo_PNG.png')
 resized_img = img.resize((300, 300))
 
 # Display the logo and title
@@ -87,7 +87,12 @@ def main():
     district_df=df
     min_date = datetime(2014, 1, 1)
     max_date = datetime(2023, 12, 1)
-    selected_start_date = st.date_input("Select start month and year:", min_value=min_date, max_value=max_date, value=min_date)
+    col1,col2=st.coloumns(2)
+    with col1:
+        
+        selected_start_date = st.date_input("Select start month and year:", min_value=min_date, max_value=max_date, value=min_date)
+    with col2:
+        st.link_button("Go Real Time Satellite imeges prediction", "https://methane-emission-webapp-vasudhafoundation.streamlit.app/")
     selected_start_month = selected_start_date.month
     selected_start_year = selected_start_date.year
     selected_start_time = f'{selected_start_year}_{selected_start_month:02d}_01'
