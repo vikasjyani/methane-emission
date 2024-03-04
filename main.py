@@ -87,7 +87,7 @@ def main():
     district_df=df
     min_date = datetime(2014, 1, 1)
     max_date = datetime(2023, 12, 1)
-    col1,col2=st.coloumns(2)
+    col1,col2=st.columns(2)
     with col1:
         
         selected_start_date = st.date_input("Select start month and year:", min_value=min_date, max_value=max_date, value=min_date)
