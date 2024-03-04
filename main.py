@@ -64,7 +64,9 @@ def ploting_data(df, selected_date,selected_location):
                             color_continuous_midpoint=(min_value + max_value) / 2) # Set midpoint for color scale
 
     # Update layout to set legend title
-    fig.update_layout(coloraxis_colorbar_title="Methane in Tonnes ",title=f"Total methane content in atmosphare is {data1[selected_date].sum()} tonnes for {selected_location}")
+    total_methane = round(data1[selected_date].sum(), 2)
+
+    fig.update_layout(coloraxis_colorbar_title="Methane in Tonnes ",title= f"Total methane content in the atmosphere is {total_methane} tonnes for {selected_location}")
 
     # Show the plot
     st.plotly_chart(fig)
