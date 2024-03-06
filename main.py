@@ -141,8 +141,8 @@ def main():
     print(combined_df)
     ploting_data(combined_df, selected_date,'selected State')
 
-    months = months_list # Months from January to December
-
+    #months = months_list # Months from January to December
+    months = range(1, 13)
     # Generate a list of formatted date strings for each month
     selected_times_line_plot = [f'{selected_start_year}_{month:02d}_01' for month in months]
     data_district = []
