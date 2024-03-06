@@ -4,7 +4,20 @@ import pandas as pd
 import streamlit as st
 from PIL import Image
 import plotly.express as px
-
+months_list = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+]
 # Load and resize the logo
 img = Image.open('Vasudha_Logo_PNG.png')
 resized_img = img.resize((300, 300))
@@ -66,7 +79,7 @@ def ploting_data(df, selected_date,selected_location):
     # Update layout to set legend title
     total_methane = round(data1[selected_date].sum(), 2)
 
-    fig.update_layout(coloraxis_colorbar_title="Methane in Tonnes ",title= f"Total methane content in the atmosphere is {total_methane} tonnes for {selected_location}")
+    fig.update_layout(coloraxis_colorbar_title="Methane in Tonnes ",title= f"Total methane concentration is {total_methane} tonnes for {selected_location}")
 
     # Show the plot
     st.plotly_chart(fig)
@@ -94,7 +107,7 @@ def main():
         
         selected_start_date = st.date_input("Select start month and year:", min_value=min_date, max_value=max_date, value=min_date)
     with col2:
-        st.link_button("Go Real Time Satellite imeges prediction", "https://methane-emission-webapp-vasudhafoundation.streamlit.app/")
+        st.link_button("Home", "https://methane-emission-webapp-vasudhafoundation.streamlit.app/")
     selected_start_month = selected_start_date.month
     selected_start_year = selected_start_date.year
     selected_start_time = f'{selected_start_year}_{selected_start_month:02d}_01'
@@ -128,7 +141,7 @@ def main():
     print(combined_df)
     ploting_data(combined_df, selected_date,'selected State')
 
-    months = range(1, 13) # Months from January to December
+    months = months_list # Months from January to December
 
     # Generate a list of formatted date strings for each month
     selected_times_line_plot = [f'{selected_start_year}_{month:02d}_01' for month in months]
